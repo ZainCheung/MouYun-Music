@@ -1,0 +1,204 @@
+.mod_header {
+		    background-color: #fff;
+		    position: relative;
+		    z-index: 4;
+			margin-left: 50px;
+		}
+		.mod_header .section_inner {
+		    padding-top: 90px;
+			margin-top: 0px;
+			    margin-right: 50px;
+			    margin-bottom: 0px;
+			    margin-left: 50px;
+			min-width: 900px;
+		}
+		/* .section_inner {
+		    margin: 0 50px;
+		        
+		} */
+		.music_logo {
+		    width: 170px;
+		    height: 46px;
+		}
+		.qqmusic_title {
+		    position: absolute;
+		    left: 0;
+		    top: 0px;
+		}
+		.mod_top_nav {
+		    position: absolute;
+		    left: 198px;
+		    top: 0;
+		}
+		.top_nav__item {
+		    position: relative;
+		    float: left;
+		    margin-right: -5px;
+		}
+		.top_nav__link--current, .top_nav__link--current:hover {
+		    background-color: #31c27c;
+		    color: #fff;
+		}
+		.top_nav__link {
+		    display: block;
+		    padding: 0 20px;
+		    line-height: 90px;
+		    height: 90px;
+		    text-align: center;
+		    font-size: 18px;
+		}
+		.mod_top_subnav {
+		    height: 51px;
+		    line-height: 51px;
+		    border-top: 1px solid #f2f2f2;
+		    padding-left: 230px;
+		    margin-right: -50px;
+		}
+		.top_subnav__item {
+		    float: left;
+		    font-size: 15px;
+		    color: #c1c1c1;
+		    margin-right: 47px;
+		}
+		.top_subnav__link--current {
+		    color: #31c27c;
+		}
+		.top_subnav__link {
+		    display: block;
+		}
+		.mod_top_search {
+		    position: absolute;
+		    top: 0;
+		    right: 284px;
+		}
+		.mod_search_input {
+		    border: 1px solid #c9c9c9;
+		    padding: 0 33px 0 11px;
+		    line-height: 36px;
+		    height: 36px;
+		    margin-top: 26px;
+			margin-left: 800px;
+		    position: relative;
+		    border-radius: 3px;
+		    background-color: #fff;
+		    -webkit-transition: width .6s ease-out;
+		    transition: width .6s ease-out;
+		}
+		.search_input__input {
+		    width: 174px;
+		    height: 36px;
+		    border: 0 none;
+		    font-size: 14px;
+		    background: 0 0;
+		    -webkit-transition: width .6s ease-out,visibility .6s 1ms ease-out;
+		    transition: width .6s ease-out,visibility .6s 1ms ease-out;
+		}
+		input {
+		    color: #000;
+		    background-color: #fff;
+		    font-size: 14px;
+		    line-height: 1.5;
+		    font-family: poppin,Tahoma,Arial,\5FAE\8F6F\96C5\9ED1,sans-serif;
+		    font-family: Tahoma,Arial,\5FAE\8F6F\96C5\9ED1,sans-serif/9;
+		}
+		.search_input__btn {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    border: 0 none;
+			margin-right: 0px;
+		    width: 38px;
+		    height: 35px;
+		    overflow: visible;
+		    background: 0 0;
+		}
+		.input-group-btn {
+			margin-left: 100px;
+		}
+		.icon_search {
+		    position: absolute;
+		    top: 50%;
+		    right: 11px;
+		    margin-top: -8px;
+		    width: 16px;
+		    height: 16px;
+		    background-position: 0 -40px;
+		}
+		.sprite, .sprite_before:before {
+		    background-image: url(img/icon_sprite.png?max_age=2592000&v=85678e8…);
+		    background-image: -webkit-image-set(url(img/icon_sprite.png?max_age=2592000&v=85678e8…&v=85678e8…) 1x,url(img/icon_sprite@2x.png?max_age=2592000&v=85678e8…&v=85678e8…&v=ce93ff1…) 2x);
+		}
+		.icon_txt {
+		    font: 0/0 a;
+		}
+		.mod_search_other, .mod_search_result, .popup_user {
+		    max-height: 0;
+		    visibility: hidden;
+		    -webkit-transition: max-height .6s ease-out,visibility 1ms .6s;
+		    transition: max-height .6s ease-out,visibility 1ms .6s;
+		    overflow: hidden;
+		}
+		.search_hot {
+		    padding: 5px 0;
+		}
+		dl,dt {
+		    margin: 0;
+		    padding: 0;
+		}
+		.search_hot__tit {
+		    display: none;
+		}
+		.search_hot__link {
+		    display: block;
+		    overflow: hidden;
+		    white-space: nowrap;
+		    text-overflow: ellipsis;
+		}
+		.search_hot__link {
+		    padding-left: 11px;
+		    padding-right: 11px;
+		}
+		.search_history {
+		    padding: 5px 0;
+		    border-bottom: 1px solid #f2f2f2;
+		}
+		.search_history__tit {
+		    padding-left: 11px;
+		}
+		.search_history__tit {
+		    color: #999;
+		    position: relative;
+		}
+		.search_history__clear {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    width: 40px;
+		    height: 36px;
+		    font-size: 2px;
+		    text-align: center;
+		}
+		.search_history__item {
+		    position: relative;
+		}
+		.search_history__link, .search_history__tit {
+		    padding-left: 11px;
+		}
+		.search_history__link {
+		    display: block;
+		    color: #333;
+		    padding-right: 15px;
+		    white-space: nowrap;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		}
+		.search_history__delete {
+		    display: none;
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    width: 33px;
+		    height: 36px;
+		    font-size: 2px;
+		    text-align: center;
+		}
