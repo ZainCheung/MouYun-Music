@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<link rel="icon" href="img/favicon.ico">
+    <title>正在播放</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css.map" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet"/>
+	
+	<style>
+		.row {
+			margin-bottom: 5px;
+		}
+	</style>
+  </head>
+  <body>
+	  
+	  <!-- 引入导航栏 -->
+	  <div class="mod_header">
+	      <div class="section_inner">
+	          <h1 class="qqmusic_title"><a href="index.html"><img src="img/musiclogo.png" alt="牟云音乐" class="music_logo"></a></h1>
+	          <!-- 导航 S -->
+	          <ul class="mod_top_nav" role="nav">
+	              <li class="top_nav__item">
+	                  <a href="index.html" class="top_nav__link top_nav__link--current" title="音乐馆">音乐馆</a>
+	              </li>
+	              <li class="top_nav__item">
+	                  <a href="playlists.html" class="top_nav__link" title="歌单">歌单</a>
+	              </li>
+	  			<li class="top_nav__item">
+	  			    <a href="index.html#ranking" class="top_nav__link" title="排行榜">排行榜</a>
+	  			</li>
+	  			<li class="top_nav__item">
+	  			    <a href="singers.html" class="top_nav__link" title="歌手">歌手</a>
+	  			</li>
+	          </ul>
+	  	</div>
+	  </div>
+	  <!-- 加载动画 -->
+	  <div class='miaov_head' id="loading">
+	     <iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src="loading.html" width="100%"  height="520px">
+	    </iframe>
+	  </div>
+	<div class="container hidden" id="body" v-cloak>
+		 
+		<div id="aplayer">
+		</div>
+		<footer class="footer navbar-fixed-bottom">
+		</footer>
+    </div>
+	
+	<div class="row" id="comment" v-cloak>
+		<div class="row">
+			<div class="col-md-4 col-md-offset-1">
+				<h2>评论&nbsp;&nbsp;<small>共{{ commentsCount }}条评论</small> </h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-md-offset-1">
+				<h4>热评({{ hotComments.length }})</h4>
+			</div>
+		</div>
+		<div class="row" >
+			 <div class="col-md-10 col-md-offset-1">
+				<div class="row" v-for="hotComment in hotComments">
+					<hr />
+					<div class="col-md-1">
+						<img class="img-circle user-photo" :src="hotComment.user.avatarUrl" />
+					</div>
+					<div class="col-md-11 comment">
+						<div class="row">
+							<span>{{ hotComment.user.nickname }}</span>
+						</div>
+						<div class="row">
+							<span>{{ hotComment.content }}</span>
+						</div>
+						<div class="row">
+							<div class="col-md-5 comment-footer">
+								{{ timestampToTime(hotComment.time) }}
+							</div>
+							<div class="col-md-2 col-md-offset-5">
+								<button type="button" class="btn btn-default btn-xs">
+								  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 
+								</button>{{ hotComment.likedCount }}
+							</div>
+							
+						</div>
+					</div>
+				</div> 
+			 </div>
+		 </div>
+	</div>
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+	<!-- 三个音乐插件 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js.map"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+	<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="js/jquery.base64.js"></script>
+  </body>
+  <script>
+	  var aplayer;
+	  $.ajaxSettings.async = false;
+	  //接收一个值
+	  function oneValues(){
+	  	var result;
+	  	var errors = ['404.html','505.html'];
+	  	var url=(window.location.search); //获取url中"?"符后的字串
+	  	try{
+	  		var decodeUrl = $.base64.decode(url.substring(1));
+	  	}catch(e){
+	  		window.location.href=errors[Math.floor(Math.random() * errors.length)];
+	  	}
+	  	if(url.indexOf("?")!=-1){
+	  		result = decodeUrl.substr(decodeUrl.indexOf("=")+1);
+	  	}
+	  	return result;
+	  }
+	  
+	  
+	  
+	  $(document).keydown(function(event){
+	  
+	  　　var e = event || window.event;
+	  
+	  　　var k = e.keyCode || e.which;
+	  
+		 var time = aplayer.audio.currentTime;
+		 
+	  　　switch(k) {
+	  
+			case 32: //播放/暂停切换
+				aplayer.toggle();
+	　　　　	break;
+	
+			case 37: //左键
+				aplayer.seek(time - 1);
+			break;
+			
+			case 39: //右键
+				aplayer.seek(time + 1);
+			break;
+			
+	  　　}
+	  　　　　return false;
+	  });
+	  
+	  //接收多值
+	  function get_ids(){
+	  	var url=window.location.search;
+		
+		var errors = ['404.html','505.html'];
+		var decodeUrl = $.base64.decode(url.substring(1));
+	  	if(url.indexOf("?")!=-1){
+	  		// var str = url.substr(1);
+			var str = decodeUrl.substr(1);
+	  		strs = str.split("&");
+	  		var key=new Array(strs.length);
+	  		var value=new Array(strs.length);
+	  		for(i=0;i<strs.length;i++){
+	  			key[i]=strs[i].split("=")[0]
+	  			value[i]=unescape(strs[i].split("=")[1]); 
+	  			console.log(key[i]+"="+value[i]);
+	  		}
+			if(value[1] == 'playlist'){
+				$.getJSON(
+				    "http://47.96.174.115/playlist/detail?id=" + value[0],
+					function(data) {
+						if(data.code == 200){
+							for(var i=0,len=data.playlist.trackIds.length;i<len;i++){
+								player.ids.push(data.playlist.trackIds[i].id);
+								player.idString += data.playlist.trackIds[i].id;
+								if(i<len-1)
+									player.idString += ',';
+							}
+						}
+					}
+				);
+			}else{
+				player.ids.push(parseInt(value[0]));
+				
+				player.idString += value[0];
+			}
+	  	}
+		return player.idString;
+	  }
+		  
+	  var player = new Vue({
+		  el: '#body',
+		  data: {
+			  current_song: {
+				  name: '',
+				  id: '',
+				  singer: [],//歌手
+				  al: {},//专辑
+				  url: '',
+				  lrc: '',
+				  similar: [], //相似歌曲
+			  },
+			  song :{
+					name: '',
+					artist: '',
+					url: '',
+					cover: '',
+			  },
+			  idString: '',
+			  ids: [],
+			  names: [],
+			  artists: [],
+			  urls: [],
+			  covers: [],
+			  lrcs: [],
+			  songs: [],
+		  },
+		  methods:{
+			// 传送至相应的歌手详情页面
+			toSingerPage: function (id) {
+				return 'singer.html?' + $.base64.encode('id=' + id);
+			},
+			//传送至相应的专辑详情页面
+			toAlbumPage: function (id) {
+				return 'album.html?' + $.base64.encode('id=' + id);
+			},
+		  },
+	  });
+	  
+	// 获取歌曲详情
+	$.getJSON(
+		"http://47.96.174.115/song/detail?ids=" + get_ids(),
+		function(data) {
+			if(data.code == 200){
+				for(var i=0;i<data.songs.length;i++){
+					var title = '';
+					// 添加名字数组
+					player.names.push(data.songs[i].name);
+					// 组装歌手
+					for(var j=0,len=data.songs[i].ar.length;j<len;j++){
+						title += data.songs[i].ar[j].name;
+						if(j<len-1)
+							title += ' / ';
+					}
+					// 添加歌手数组
+					player.artists.push(title);
+					// 添加专辑图数组
+					player.covers.push(data.songs[i].al.picUrl);
+				}
+				var title = player.names[0] + " - ";
+				var singer_name = player.artists[0];
+				document.title = title + singer_name;
+				document.getElementById("loading").setAttribute("class","miaov_head hidden");
+				$("div#body").removeClass("hidden");
+		  }
+		}
+	);
+		// 获取音乐URL
+	  $.getJSON(
+		  "http://47.96.174.115/song/url?id=" + player.idString,
+		  function(data) {
+			  if(data.code == 200){
+				player.urls = new Map();
+				for(var i=0,length=data.data.length;i<length;i++){
+					player.urls.set(data.data[i].id,data.data[i].url);
+				}
+				if(data.data[0].url != null){
+					player.current_song.url = data.data[0].url;
+				}else
+					alert("当前歌曲无版权");
+			  }
+		  }
+	  );
+			for(var i=0,length=player.ids.length;i<length;i++){
+				
+				player.songs.push({
+					name: player.names[i],
+					artist: player.artists[i],
+					url: player.urls.get(player.ids[i]),
+					cover: player.covers[i],
+					
+				});
+				// lrc: player.lrcs[i],
+			}
+			aplayer = new APlayer({
+				container: document.getElementById('aplayer'),
+				
+				fixed: true,
+				audio: player.songs,
+			});
+			aplayer.on('abort', function () {
+			    console.log(aplayer.title);
+			});
+			// lrcType: 1,
+	  // 评论Vue对象实例,绑定comment组件
+	  var commentVue = new Vue({
+		  el: '#comment',
+		  data: {
+			commentsCount: '',
+			comments: [],
+			hotComments: [],
+			},
+			methods:{
+				 timestampToTime: function(timestamp) {
+					    var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+					    var Y = date.getFullYear() ;
+					    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) ;
+					    var D = date.getDate() ;
+					    var h = date.getHours() ;
+						if(h < 10)
+							h = '0' + h;
+					    var m = date.getMinutes() ;
+						if(m < 10)
+							m = '0' + m;
+					    var s = date.getSeconds();
+					    return Y + '年' + M + '月' + D + '日 ' + h + ':' + m ;
+					}
+			},
+	  });
+	  // 获取评论
+	  $.getJSON(
+	  		  "http://47.96.174.115/comment/music?id=" + player.ids[0] + '&limit=10',
+	  		  function(data) {
+	  			  if(data.code == 200){
+	  					commentVue.commentsCount = data.total;
+						commentVue.hotComments = data.hotComments;
+						commentVue.comments = data.comments;
+	  			  }
+	  		  }
+	  );
+	
+  </script>
+</html>
