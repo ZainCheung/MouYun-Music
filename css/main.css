@@ -212,6 +212,19 @@
 		    margin-top: 40px;
 		    margin-bottom: 35px;
 		}
+		.data_play__all {
+		    position: absolute;
+			min-width: 122px;
+			text-align: center;
+			padding-top: 15px;
+		    /* bottom: 23px; */
+		    
+		}
+		.a_play_all {
+			font-size: 22px;
+			/* background: #31C27C;
+			color: white; */
+		}
 		.data__cover { //歌单图块
 		    position: absolute;
 		    left: 0;
@@ -762,5 +775,6 @@
 		    overflow: hidden;
 		    text-overflow: ellipsis;
 		    height: 22px;
+			text-align: left;
 		}
 		
