@@ -104,13 +104,13 @@
 				<div style="width:600px;margin:0 auto; padding:20px 0;">
 					<p style="margin:10px 0px;">
 					<b>Copyright © 2019
-					<a href="http://superBoyJack.cn" target="_blank" title="superBoyJack"> superBoyJack</a> 版权所有 Powered By 
+					<a href="https://superBoyJack.cn" target="_blank" title="superBoyJack"> superBoyJack</a> 版权所有 Powered By 
 					<a href="http://wpa.qq.com/msgrd?uin=2656288235" target="_blank" title="superBoyJack">superBoyJack</a> Design.&nbsp;&nbsp;
 					</b>
 					<!-- 备案信息代码 -->
 					</p>
 					<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41152502000110" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
-						<img src="http://superboyjack.cn/upload/2019/11/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87-b8473f72b5dc4bf1885d394815c38a9a.png" style="float:left;"/>
+						<img src="https://superboyjack.cn/upload/2019/11/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87-b8473f72b5dc4bf1885d394815c38a9a.png" style="float:left;"/>
 						<p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
 						豫公网安备 41152502000110号 豫ICP备19039675号
 						</p>
@@ -197,7 +197,7 @@
 	  		}
 			if(value[1] == 'playlist'){
 				$.getJSON(
-				    "http://47.96.174.115/playlist/detail?id=" + value[0],
+				    "https://api.music.superboyjack.cn/playlist/detail?id=" + value[0],
 					function(data) {
 						if(data.code == 200){
 							for(var i=0,len=data.playlist.trackIds.length;i<len;i++){
@@ -259,7 +259,7 @@
 	  
 	// 获取歌曲详情
 	$.getJSON(
-		"http://47.96.174.115/song/detail?ids=" + get_ids(),
+		"https://api.music.superboyjack.cn/song/detail?ids=" + get_ids(),
 		function(data) {
 			if(data.code == 200){
 				for(var i=0;i<data.songs.length;i++){
@@ -287,7 +287,7 @@
 	);
 		// 获取音乐URL
 	  $.getJSON(
-		  "http://47.96.174.115/song/url?id=" + player.idString,
+		  "https://api.music.superboyjack.cn/song/url?id=" + player.idString,
 		  function(data) {
 			  if(data.code == 200){
 				player.urls = new Map();
@@ -349,7 +349,7 @@
 	  });
 	  // 获取评论
 	  $.getJSON(
-	  		  "http://47.96.174.115/comment/music?id=" + player.ids[0] + '&limit=10',
+	  		  "https://api.music.superboyjack.cn/comment/music?id=" + player.ids[0] + '&limit=10',
 	  		  function(data) {
 	  			  if(data.code == 200){
 	  					commentVue.commentsCount = data.total;

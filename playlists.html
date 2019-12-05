@@ -111,13 +111,13 @@
 				<div style="width:600px;margin:0 auto; padding:20px 0;">
 					<p style="margin:10px 0px;">
 					<b>Copyright © 2019
-					<a href="http://superBoyJack.cn" target="_blank" title="superBoyJack"> superBoyJack</a> 版权所有 Powered By 
+					<a href="https://superBoyJack.cn" target="_blank" title="superBoyJack"> superBoyJack</a> 版权所有 Powered By 
 					<a href="http://wpa.qq.com/msgrd?uin=2656288235" target="_blank" title="superBoyJack">superBoyJack</a> Design.&nbsp;&nbsp;
 					</b>
 					<!-- 备案信息代码 -->
 					</p>
 					<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41152502000110" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
-						<img src="http://superboyjack.cn/upload/2019/11/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87-b8473f72b5dc4bf1885d394815c38a9a.png" style="float:left;"/>
+						<img src="https://superboyjack.cn/upload/2019/11/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87-b8473f72b5dc4bf1885d394815c38a9a.png" style="float:left;"/>
 						<p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
 						豫公网安备 41152502000110号 豫ICP备19039675号
 						</p>
@@ -161,7 +161,7 @@
 		
 		
 		$.getJSON(
-		    "http://47.96.174.115/playlist/catlist",
+		    "https://api.music.superboyjack.cn/playlist/catlist",
 		    function(data) {
 				if(data.code == 200){
 					playlistsVue.categories = data.categories;
@@ -178,7 +178,7 @@
 		);
 		
 		$.getJSON(
-		    "http://47.96.174.115/top/playlist",
+		    "https://api.music.superboyjack.cn/top/playlist",
 		    function(data) {
 				if(data.code == 200){
 					playlistsVue.playlists = data.playlists;
@@ -190,7 +190,7 @@
 			var tag_var = "cat=" + tag;
 			var order_var = "order=" + order;
 			$.getJSON(
-			    "http://47.96.174.115/top/playlist?" + tag_var + "&" + order_var,
+			    "https://api.music.superboyjack.cn/top/playlist?" + tag_var + "&" + order_var,
 			    function(data) {
 					if(data.code == 200){
 						playlistsVue.playlists = data.playlists;

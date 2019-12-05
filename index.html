@@ -237,13 +237,13 @@
 				<div style="width:600px;margin:0 auto; padding:20px 0;">
 					<p style="margin:10px 0px;">
 					<b>Copyright © 2019
-					<a href="http://superBoyJack.cn" target="_blank" title="superBoyJack"> superBoyJack</a> 版权所有 Powered By 
+					<a href="https://superBoyJack.cn" target="_blank" title="superBoyJack"> superBoyJack</a> 版权所有 Powered By 
 					<a href="http://wpa.qq.com/msgrd?uin=2656288235" target="_blank" title="superBoyJack">superBoyJack</a> Design.&nbsp;&nbsp;
 					</b>
 					<!-- 备案信息代码 -->
 					</p>
 					<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41152502000110" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
-						<img src="http://superboyjack.cn/upload/2019/11/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87-b8473f72b5dc4bf1885d394815c38a9a.png" style="float:left;"/>
+						<img src="https://superboyjack.cn/upload/2019/11/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87-b8473f72b5dc4bf1885d394815c38a9a.png" style="float:left;"/>
 						<p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
 						豫公网安备 41152502000110号 豫ICP备19039675号
 						</p>
@@ -270,7 +270,7 @@
 				return count;
 		}
 		$.getJSON(
-		    "http://47.96.174.115/top/playlist/",
+		    "https://api.music.superboyjack.cn/top/playlist/",
 		    function(data) {
 				recommendationVue.showloading = true;
 				for(var i=0;i<data.playlists.length;i++){
@@ -349,7 +349,7 @@
 		
 		// 获取热歌榜数据
 		$.getJSON(
-		    "http://47.96.174.115/top/list?idx=1",
+		    "https://api.music.superboyjack.cn/top/list?idx=1",
 		    function(data) {
 				if(data.code == 200){
 					rankingVue.id = data.playlist.id;
@@ -360,7 +360,7 @@
 		);
 		// 获取新歌榜数据
 		$.getJSON(
-		    "http://47.96.174.115/top/list?idx=0",
+		    "https://api.music.superboyjack.cn/top/list?idx=0",
 		    function(data) {
 				if(data.code == 200){
 					rankingVue.new_id = data.playlist.id;
@@ -371,7 +371,7 @@
 		);
 		// 获取歌手榜数据
 		$.getJSON(
-		    "http://47.96.174.115/toplist/artist",
+		    "https://api.music.superboyjack.cn/toplist/artist",
 		    function(data) {
 				if(data.code == 200){
 					rankingVue.singer_updateTime = data.list.updateTime;
@@ -381,7 +381,7 @@
 		);
 		// 获取欧美榜数据
 		$.getJSON(
-		    "http://47.96.174.115/top/list?idx=6",
+		    "https://api.music.superboyjack.cn/top/list?idx=6",
 		    function(data) {
 				if(data.code == 200){
 					rankingVue.oumei_id = data.playlist.id;
@@ -399,7 +399,7 @@
 				// 如果输入框有内容
 				if(event.target.value != ''){
 					$.getJSON(
-					    "http://47.96.174.115/search/suggest?keywords=" + event.target.value,
+					    "https://api.music.superboyjack.cn/search/suggest?keywords=" + event.target.value,
 					    function(data) {
 							if(data.code == 200){
 								suggestVue.songs = data.result.songs;
@@ -413,7 +413,7 @@
 				}else{
 					if(hotVue.hot_searchs == ''){
 						$.getJSON(
-						    "http://47.96.174.115/search/hot/detail",
+						    "https://api.music.superboyjack.cn/search/hot/detail",
 						    function(data) {
 								if(data.code == 200){
 									hotVue.hot_searchs = data.data;
@@ -440,7 +440,7 @@
 			$("input").focus(function(){
 				if($('#input').val() != ''){
 					$.getJSON(
-					    "http://47.96.174.115/search/suggest?keywords=" + event.target.value,
+					    "https://api.music.superboyjack.cn/search/suggest?keywords=" + event.target.value,
 					    function(data) {
 							if(data.code == 200){
 								suggestVue.songs = data.result.songs;
@@ -454,7 +454,7 @@
 				}else{
 					if(hotVue.hot_searchs == ''){
 						$.getJSON(
-						    "http://47.96.174.115/search/hot/detail",
+						    "https://api.music.superboyjack.cn/search/hot/detail",
 						    function(data) {
 								if(data.code == 200){
 									hotVue.hot_searchs = data.data;
