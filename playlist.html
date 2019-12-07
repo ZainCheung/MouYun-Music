@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
@@ -278,7 +278,7 @@
 	      "https://api.music.superboyjack.cn/playlist/detail?id=" + oneValues(),
 			function(data) {
 				if(data.code == 200){
-					playlistVue.coverImgUrl = data.playlist.coverImgUrl;//歌单图片
+					playlistVue.coverImgUrl = data.playlist.coverImgUrl.replace('http','https');//歌单图片
 					playlistVue.name = data.playlist.name;//歌单名
 					playlistVue.playCount = formatPlayCount(data.playlist.playCount);//歌单播放次数
 					playlistVue.trackCount = data.playlist.trackCount;//歌单歌曲数量
@@ -330,7 +330,7 @@
 						if(data.data[0].url != null){
 							//下载模块
 							var x=new XMLHttpRequest();
-							x.open("GET", data.data[0].url, true);
+							x.open("GET", data.data[0].url.replace('http','https'), true);
 							x.responseType = 'blob';
 							x.onload=function(e){download(x.response, obj.dataset.name + ".mp3" , "audio/mp3" ); }
 							x.send();

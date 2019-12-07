@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
@@ -277,7 +277,7 @@
 					// 向推荐歌单数组里遍历添加歌单
 					recommendationVue.playlists.push({
 						id: data.playlists[i].id,
-						coverImgUrl: data.playlists[i].coverImgUrl,
+						coverImgUrl: data.playlists[i].coverImgUrl.replace('http','https'),
 						name: data.playlists[i].name,
 						playCount: formatPlayCount(data.playlists[i].playCount)
 						});

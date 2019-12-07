@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
@@ -139,7 +139,7 @@
 									<tr>
 										<td>
 											<a :href="toAlbumPage(album.id)" target="_blank">
-												<img width="100" height="100" :src="album.blurPicUrl + '?param=200y200'" />
+												<img width="100" height="100" :src="album.blurPicUrl.replace('http','https') + '?param=200y200'" />
 												<span class="search_name" >{{ album.name }}</span>
 											</a>
 										</td>

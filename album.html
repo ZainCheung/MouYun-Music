@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
@@ -256,7 +256,7 @@
 						if(data.data[0].url != null){
 							//下载模块
 							var x=new XMLHttpRequest();
-							x.open("GET", data.data[0].url, true);
+							x.open("GET", data.data[0].url.replace('http','https'), true);
 							x.responseType = 'blob';
 							x.onload=function(e){download(x.response, obj.dataset.name + ".mp3" , "audio/mp3" ); }
 							x.send();

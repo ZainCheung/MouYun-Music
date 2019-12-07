@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
@@ -79,7 +79,7 @@
 							<div class="playlist__item_box">
 								<div class="playlist__cover mod_cover" style="visibility: visible;">
 									<a :href="toPlaylistPage(playlist.id)" class="js_playlist" :title="playlist.name">
-										<img :src="playlist.coverImgUrl" :alt="playlist.name" class="playlist__pic" style="display: block; visibility: visible;">
+										<img :src="playlist.coverImgUrl.replace('http','https')" :alt="playlist.name" class="playlist__pic" style="display: block; visibility: visible;">
 										<i class="mod_cover__icon_play js_play"></i>
 									</a>
 								</div>
