@@ -363,7 +363,7 @@
 		
 		// 获取热歌榜数据
 		$.getJSON(
-		    "https://api.superboyjack.cn/music/top/list?idx=1",
+		    "https://api.superboyjack.cn/top/list?idx=1",
 		    function(data) {
 				if(data.code == 200){
 					rankingVue.id = data.playlist.id;
@@ -375,7 +375,7 @@
 		);
 		// 获取新歌榜数据
 		$.getJSON(
-		    "https://api.superboyjack.cn/music/top/list?idx=0",
+		    "https://api.superboyjack.cn/top/list?idx=0",
 		    function(data) {
 				if(data.code == 200){
 					rankingVue.new_id = data.playlist.id;
@@ -386,7 +386,7 @@
 		);
 		// 获取歌手榜数据
 		$.getJSON(
-		    "https://api.superboyjack.cn/music/toplist/artist",
+		    "https://api.superboyjack.cn/toplist/artist",
 		    function(data) {
 				if(data.code == 200){
 					//rankingVue.singer_updateTime = data.list.updateTime;
@@ -396,7 +396,7 @@
 		);
 		// 获取欧美榜数据
 		$.getJSON(
-		    "https://api.superboyjack.cn/music/top/list?idx=6",
+		    "https://api.superboyjack.cn/top/list?idx=6",
 		    function(data) {
 				if(data.code == 200){
 					rankingVue.oumei_id = data.playlist.id;
