@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet"/>
 	
-	<meta name="keywords" content="音乐，牟云音乐，网易云音乐，音乐馆，歌单，排行榜，歌手，免费下载，在线音乐，免费音乐,音乐，播放器，网易，下载，播放，DJ，免费，明星，精选，歌单，识别音乐，收藏，分享音乐，音乐互动，高音质，320K，音乐社交，官网，music.superboyjack.cn">
+	<meta name="keywords" content="音乐，牟云音乐，网易云音乐，音乐馆，歌单，排行榜，歌手，免费下载，在线音乐，免费音乐,音乐，播放器，网易，下载，播放，DJ，免费，明星，精选，歌单，识别音乐，收藏，分享音乐，音乐互动，高音质，320K，音乐社交，官网，music.520303.xyz">
 	<meta name="description" content="牟云音乐是一个音乐爱好者推出的一款网络音乐服务产品，海量音乐在线试听、新歌热歌在线首发、歌词翻译、手机铃声下载、高品质无损音乐试听、海量无损曲库、正版音乐下载、、MV观看等，是互联网音乐播放和下载的优选。">
 	<!-- 百度统计 -->
 	<script>
@@ -285,7 +285,7 @@
 			if(searchVue.albumCount == ''){
 				// type=10搜索专辑
 				$.getJSON(
-				    "https://api.music.superboyjack.cn/search?type=10&keywords=" + oneValues(),
+				    "https://api.music.520303.xyz/search?type=10&keywords=" + oneValues(),
 				    function(data) {
 						if(data.code == 200){
 							searchVue.albums = data.result.albums;
@@ -303,7 +303,7 @@
 			if(searchVue.playlistCount == ''){
 				// type=1000搜索歌单
 				$.getJSON(
-				    "https://api.music.superboyjack.cn/search?type=1000&keywords=" + oneValues(),
+				    "https://api.music.520303.xyz/search?type=1000&keywords=" + oneValues(),
 				    function(data) {
 						if(data.code == 200){
 							searchVue.playlists = data.result.playlists;
@@ -321,7 +321,7 @@
 			if(searchVue.singerCount == ''){
 				// type=100搜索歌手
 				$.getJSON(
-				    "https://api.music.superboyjack.cn/search?type=100&keywords=" + oneValues(),
+				    "https://api.music.520303.xyz/search?type=100&keywords=" + oneValues(),
 				    function(data) {
 						if(data.code == 200){
 							searchVue.singers = data.result.artists;
@@ -412,7 +412,7 @@
 		});
 		// 搜索单曲
 		$.getJSON(
-		    "https://api.music.superboyjack.cn/search?keywords=" + oneValues(),
+		    "https://api.music.520303.xyz/search?keywords=" + oneValues(),
 		    function(data) {
 				if(data.code == 200){
 					searchVue.songs = data.result.songs;
@@ -426,7 +426,7 @@
 			var success = '<svg t="1575529909134" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http:\/\/www.w3.org\/2000\/svg" p-id="1438" width="32" height="32"><path d="M512 85.333333c235.648 0 426.666667 191.018667 426.666667 426.666667s-191.018667 426.666667-426.666667 426.666667S85.333333 747.648 85.333333 512 276.352 85.333333 512 85.333333z m-74.965333 550.4L346.453333 545.152a42.666667 42.666667 0 1 0-60.330666 60.330667l120.704 120.704a42.666667 42.666667 0 0 0 60.330666 0l301.653334-301.696a42.666667 42.666667 0 1 0-60.288-60.330667l-271.530667 271.488z" fill="#52C41A" p-id="1439"><\/path><\/svg>';
 			// 获取音乐URL
 			$.getJSON(
-					  "https://api.music.superboyjack.cn/song/url?id=" + obj.dataset.id,
+					  "https://api.music.520303.xyz/song/url?id=" + obj.dataset.id,
 					  function(data) {
 						  if(data.code == 200){
 							if(data.data[0].url != null){
