@@ -344,44 +344,39 @@
 		$.getJSON(
 		    "https://api.520303.xyz/top/list?idx=1",
 		    function(data) {
-				if(data.code == 200){
+				// if(data.code == 200){
 					rankingVue.id = data.playlist.id;
-					//rankingVue.trackUpdateTime = data.playlist.trackUpdateTime;
 					rankingVue.songs = data.playlist.songs;
-					
-				}
+				// }
 		    }
 		);
 		// 获取新歌榜数据
 		$.getJSON(
 		    "https://api.520303.xyz/top/list?idx=0",
 		    function(data) {
-				if(data.code == 200){
+				// if(data.code == 200){
 					rankingVue.new_id = data.playlist.id;
-					//rankingVue.new_trackUpdateTime = data.playlist.trackUpdateTime;
 					rankingVue.new_songs = data.playlist.songs;
-				}
+				// }
 		    }
 		);
 		// 获取歌手榜数据
 		$.getJSON(
 		    "https://api.520303.xyz/toplist/artist",
 		    function(data) {
-				if(data.code == 200){
-					//rankingVue.singer_updateTime = data.list.updateTime;
+				// if(data.code == 200){
 					rankingVue.singers = data.playlist.artists;
-				}
+				// }
 		    }
 		);
 		// 获取欧美榜数据
 		$.getJSON(
 		    "https://api.520303.xyz/top/list?idx=6",
 		    function(data) {
-				if(data.code == 200){
+				// if(data.code == 200){
 					rankingVue.oumei_id = data.playlist.id;
-					//rankingVue.oumei_trackUpdateTime = data.playlist.trackUpdateTime;
 					rankingVue.oumei_songs = data.playlist.songs;
-				}
+				// }
 		    }
 		);
 		}, 900);
